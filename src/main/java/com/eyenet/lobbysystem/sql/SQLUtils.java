@@ -7,7 +7,7 @@ import java.util.UUID;
 
 public class SQLUtils extends SQLInit {
 
-    public int getBalance(UUID uuid){
+    public static int getBalance(UUID uuid){
 
         try{
             PreparedStatement query = con.prepareStatement("SELECT coins FROM users WHERE uuid = ?");

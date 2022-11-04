@@ -1,9 +1,11 @@
 package com.eyenet.lobbysystem;
 
+import com.eyenet.lobbysystem.commands.BalanceCommand;
 import com.eyenet.lobbysystem.commands.CheckDB;
 import com.eyenet.lobbysystem.commands.PingCommand;
 import com.eyenet.lobbysystem.commands.RandomTPCommand;
 import com.eyenet.lobbysystem.listener.OnJoinListener;
+import com.eyenet.lobbysystem.listeners.BalanceListener;
 import com.eyenet.lobbysystem.sql.CreateTables;
 import com.eyenet.lobbysystem.sql.SQLInit;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -20,11 +22,14 @@ public final class Main extends JavaPlugin {
         getCommand("ping").setExecutor(new PingCommand());
         getCommand("wild").setExecutor(new RandomTPCommand());
         getCommand("checkdb").setExecutor(new CheckDB());
+        getCommand("balance").setExecutor(new BalanceCommand());
+
         SQLInit.initDB();
         if (SQLInit.hasConn()){
             CreateTables.createTables();
         }
         getServer().getPluginManager().registerEvents(new OnJoinListener(), this);
+        getServer().getPluginManager().registerEvents(new BalanceListener(), this);
     }
 
     @Override

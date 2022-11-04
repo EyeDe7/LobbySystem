@@ -1,14 +1,18 @@
 package com.eyenet.lobbysystem.listeners;
 
+import com.eyenet.lobbysystem.sql.SQLUtils;
 import org.bukkit.Material;
+import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 
 public class BalanceListener implements Listener {
 
+    @EventHandler
     public void onBlockBreak(BlockBreakEvent event) {
         if(event.getBlock().getBlockData().getMaterial().equals(Material.OAK_LOG)) {
-            event.getPlayer().sendMessage("You broke an oak log!");
+            // increase balance
+            //SQLUtils.addBalance(event.getPlayer().getUniqueId(), 10);
         }
     }
 
