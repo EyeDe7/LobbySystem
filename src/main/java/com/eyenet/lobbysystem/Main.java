@@ -1,6 +1,8 @@
 package com.eyenet.lobbysystem;
 
+import com.eyenet.lobbysystem.commands.CheckDB;
 import com.eyenet.lobbysystem.commands.PingCommand;
+import com.eyenet.lobbysystem.sql.SQLInit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class Main extends JavaPlugin {
@@ -11,8 +13,11 @@ public final class Main extends JavaPlugin {
     public void onEnable() {
         // Plugin startup logic
         System.out.println("Enabled " + PREFIX);
+        System.out.println("Initializing Database...");
+        SQLInit.initDB();
 
         getCommand("ping").setExecutor(new PingCommand());
+        getCommand("checkdb").setExecutor(new CheckDB());
     }
 
     @Override

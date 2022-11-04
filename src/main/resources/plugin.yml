@@ -7,3 +7,6 @@ description: Lobby System
 commands:
   ping:
     description: "Ping command"
+
+  checkdb:
+    description: "Check database connection"
