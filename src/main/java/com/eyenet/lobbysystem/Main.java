@@ -9,7 +9,7 @@ public final class Main extends JavaPlugin {
     @Override
     public void onEnable() {
         // Plugin startup logic
-        System.out.println("Enabled " + PREFIX);
+        System.out.println("Enabled " +  PREFIX);
     }
 
     @Override
