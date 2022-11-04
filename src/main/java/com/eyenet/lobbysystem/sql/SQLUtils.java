@@ -54,7 +54,7 @@ public class SQLUtils extends SQLInit {
             }
 
 
-        } catch (SQLException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
