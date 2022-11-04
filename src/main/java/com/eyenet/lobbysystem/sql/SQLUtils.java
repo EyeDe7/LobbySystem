@@ -1,5 +1,8 @@
 package com.eyenet.lobbysystem.sql;
 
+import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -7,7 +10,7 @@ import java.util.UUID;
 
 public class SQLUtils extends SQLInit {
 
-    public int getBalance(UUID uuid){
+    public static int getBalance(UUID uuid){
 
         try{
             PreparedStatement query = con.prepareStatement("SELECT coins FROM users WHERE uuid = ?");
@@ -20,6 +23,51 @@ public class SQLUtils extends SQLInit {
             e.printStackTrace();
         }
         return 0;
+    }
+
+    public void addBalance(UUID uuid, int amount){
+        try{
+            PreparedStatement query = con.prepareStatement("UPDATE users SET coins = coins + ? WHERE uuid = ?");
+            query.setInt(1, amount);
+            query.setString(2, uuid.toString());
+            query.executeUpdate();
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void transferBalance(UUID senderUUID, UUID receiverUUID, int amount) {
+        try {
+
+            if (checkIfPlayerExists(receiverUUID)){
+
+                if (getBalance(senderUUID) >= amount) {
+
+                } else {
+                    Player sender = Bukkit.getPlayer(senderUUID);
+                    sender.sendMessage("§cDu hast nicht genug Geld!");
+                }
+
+            }else{
+                Player sender = Bukkit.getPlayer(senderUUID);
+                sender.sendMessage("§cDer Spieler existiert nicht!");
+            }
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void removeBalance(UUID uuid, int amount) {
+        try {
+            PreparedStatement query = con.prepareStatement("UPDATE users SET coins = coins - ? WHERE uuid = ?");
+            query.setInt(1, amount);
+            query.setString(2, uuid.toString());
+            query.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public static boolean checkIfPlayerExists(UUID uuid){
