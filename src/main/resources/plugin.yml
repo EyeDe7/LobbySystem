@@ -7,3 +7,8 @@ description: Lobby System
 commands:
   ping:
     description: "Ping command"
+  wild:
+    description: "Random teleport"
+    aliases:
+      - randomtp
+      - rtp
