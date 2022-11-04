@@ -1,0 +1,6 @@
+name: LobbySystem
+version: '${project.version}'
+main: com.eyenet.lobbysystem.Main
+api-version: 1.19
+authors: [ BambergNoa, BrandLaurent ]
+description: Lobby System
