@@ -12,6 +12,6 @@ public final class Main extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        // Plugin shutdown logic
+        System.out.println("Disabling LobbySystem...");
     }
 }
