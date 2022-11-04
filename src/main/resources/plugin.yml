@@ -4,3 +4,6 @@ main: com.eyenet.lobbysystem.Main
 api-version: 1.19
 authors: [ BambergNoa, BrandLaurent ]
 description: Lobby System
+commands:
+  ping:
+    description: "Ping command"
