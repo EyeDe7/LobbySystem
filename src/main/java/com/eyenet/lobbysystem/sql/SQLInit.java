@@ -9,8 +9,9 @@ public class SQLInit {
     private static String host, db, user, pwd;
     private static int port;
 
-    private static Connection con;
+    protected static Connection con;
 
+    //172.17.0.2 Docker
     public static void initDB(){
 
         host = "172.17.0.2";

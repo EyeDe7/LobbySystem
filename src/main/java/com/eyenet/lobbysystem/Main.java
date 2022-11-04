@@ -3,6 +3,8 @@ package com.eyenet.lobbysystem;
 import com.eyenet.lobbysystem.commands.CheckDB;
 import com.eyenet.lobbysystem.commands.PingCommand;
 import com.eyenet.lobbysystem.commands.RandomTPCommand;
+import com.eyenet.lobbysystem.listener.OnJoinListener;
+import com.eyenet.lobbysystem.sql.CreateTables;
 import com.eyenet.lobbysystem.sql.SQLInit;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -19,6 +21,10 @@ public final class Main extends JavaPlugin {
         getCommand("wild").setExecutor(new RandomTPCommand());
         getCommand("checkdb").setExecutor(new CheckDB());
         SQLInit.initDB();
+        if (SQLInit.hasConn()){
+            CreateTables.createTables();
+        }
+        getServer().getPluginManager().registerEvents(new OnJoinListener(), this);
     }
 
     @Override
