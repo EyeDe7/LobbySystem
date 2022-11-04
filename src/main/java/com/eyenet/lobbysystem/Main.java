@@ -1,5 +1,6 @@
 package com.eyenet.lobbysystem;
 
+import com.eyenet.lobbysystem.commands.PingCommand;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class Main extends JavaPlugin {
@@ -9,7 +10,9 @@ public final class Main extends JavaPlugin {
     @Override
     public void onEnable() {
         // Plugin startup logic
-        System.out.println("Enabled " +  PREFIX);
+        System.out.println("Enabled " + PREFIX);
+
+        getCommand("ping").setExecutor(new PingCommand());
     }
 
     @Override
