@@ -13,11 +13,11 @@ public class SQLInit {
 
     public static void initDB(){
 
-        host = "172.17.0.2";
+        host = "localhost";
         port = 3306;
         db = "lobbysystem";
-        user = "main";
-        pwd = "dengmamm1";
+        user = "root";
+        pwd = "";
 
         try{
             connect();
