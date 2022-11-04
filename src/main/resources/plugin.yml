@@ -14,3 +14,7 @@ commands:
       - randomtp
   checkdb:
     description: "Check database"
+  balance:
+    description: "Check balance"
+    aliases:
+      - bal
