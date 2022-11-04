@@ -25,7 +25,7 @@ public class SQLUtils extends SQLInit {
         return 0;
     }
 
-    public void addBalance(UUID uuid, int amount){
+    public static void addBalance(UUID uuid, int amount){
         try{
             PreparedStatement query = con.prepareStatement("UPDATE users SET coins = coins + ? WHERE uuid = ?");
             query.setInt(1, amount);
@@ -54,7 +54,7 @@ public class SQLUtils extends SQLInit {
             }
 
 
-        } catch (SQLException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

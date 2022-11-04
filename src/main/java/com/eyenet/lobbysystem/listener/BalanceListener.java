@@ -1,4 +1,4 @@
-package com.eyenet.lobbysystem.listeners;
+package com.eyenet.lobbysystem.listener;
 
 import com.eyenet.lobbysystem.sql.SQLUtils;
 import org.bukkit.Material;
@@ -12,7 +12,7 @@ public class BalanceListener implements Listener {
     public void onBlockBreak(BlockBreakEvent event) {
         if(event.getBlock().getBlockData().getMaterial().equals(Material.OAK_LOG)) {
             // increase balance
-            //SQLUtils.addBalance(event.getPlayer().getUniqueId(), 10);
+            SQLUtils.addBalance(event.getPlayer().getUniqueId(), 10);
         }
     }
 
