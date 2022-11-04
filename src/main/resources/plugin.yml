@@ -12,3 +12,5 @@ commands:
     aliases:
       - rtp
       - randomtp
+  checkdb:
+    description: "Check database"
