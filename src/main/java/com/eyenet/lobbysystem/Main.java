@@ -1,6 +1,7 @@
 package com.eyenet.lobbysystem;
 
 import com.eyenet.lobbysystem.commands.PingCommand;
+import com.eyenet.lobbysystem.commands.RandomTPCommand;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class Main extends JavaPlugin {
@@ -13,6 +14,7 @@ public final class Main extends JavaPlugin {
         System.out.println("Enabled " + PREFIX);
 
         getCommand("ping").setExecutor(new PingCommand());
+        getCommand("wild").setExecutor(new RandomTPCommand());
     }
 
     @Override
