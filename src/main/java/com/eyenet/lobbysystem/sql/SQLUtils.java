@@ -11,7 +11,6 @@ import java.util.UUID;
 public class SQLUtils extends SQLInit {
 
     public static int getBalance(UUID uuid){
-
         try{
             PreparedStatement query = con.prepareStatement("SELECT coins FROM users WHERE uuid = ?");
             query.setString(1, uuid.toString());
@@ -38,25 +37,18 @@ public class SQLUtils extends SQLInit {
 
     public static void transferBalance(UUID senderUUID, UUID receiverUUID, int amount) {
         try {
-
             if (checkIfPlayerExists(receiverUUID)){
-
                 if (getBalance(senderUUID) >= amount) {
-
                     addBalance(receiverUUID, amount);
                     removeBalance(senderUUID, amount);
-
                 } else {
                     Player sender = Bukkit.getPlayer(senderUUID);
                     sender.sendMessage("§cDu hast nicht genug Geld!");
                 }
-
             }else{
                 Player sender = Bukkit.getPlayer(senderUUID);
                 sender.sendMessage("§cDer Spieler existiert nicht!");
             }
-
-
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -74,7 +66,6 @@ public class SQLUtils extends SQLInit {
     }
 
     public static boolean checkIfPlayerExists(UUID uuid){
-
         try{
         PreparedStatement query = con.prepareStatement("SELECT uuid FROM users WHERE uuid = ?");
         query.setString(1, uuid.toString());
@@ -87,7 +78,6 @@ public class SQLUtils extends SQLInit {
     }
 
     public static void createPlayer(UUID uuid, String Name, int coins){
-
         try {
             PreparedStatement insert = con.prepareStatement("INSERT INTO users (uuid, name, coins) VALUES (?, ?, ?)");
             insert.setString(1, uuid.toString());

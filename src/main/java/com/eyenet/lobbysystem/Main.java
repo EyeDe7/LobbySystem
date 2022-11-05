@@ -16,16 +16,17 @@ public final class Main extends JavaPlugin {
         // Plugin startup logic
         System.out.println("Enabled " + PREFIX);
 
+        SQLInit.initDB();
+        if (SQLInit.hasConn()){
+            CreateTables.createTables();
+        }
+
         getCommand("ping").setExecutor(new PingCommand());
         getCommand("wild").setExecutor(new RandomTPCommand());
         getCommand("checkdb").setExecutor(new CheckDB());
         getCommand("balance").setExecutor(new BalanceCommand());
         getCommand("transfer").setExecutor(new TransferBalanceCommand());
 
-        SQLInit.initDB();
-        if (SQLInit.hasConn()){
-            CreateTables.createTables();
-        }
         getServer().getPluginManager().registerEvents(new OnJoinListener(), this);
         getServer().getPluginManager().registerEvents(new BalanceListener(), this);
     }

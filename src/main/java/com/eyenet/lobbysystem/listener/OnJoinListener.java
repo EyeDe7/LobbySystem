@@ -16,9 +16,12 @@ public class OnJoinListener implements Listener {
         String name = event.getPlayer().getName();
         UUID UUID = event.getPlayer().getUniqueId();
 
+
         if (!SQLUtils.checkIfPlayerExists(UUID)){
             SQLUtils.createPlayer(UUID, name, 100);
         }
+
+
 
     }
 

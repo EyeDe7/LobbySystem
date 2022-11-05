@@ -32,11 +32,8 @@ public class TransferBalanceCommand implements CommandExecutor {
             }else{
                 sender.sendMessage("§7[§3Lobby§6System§7] §cDer Spieler existiert nicht!");
             }
-
-
         }
-
-        return true;
+        return false;
     }
 
 
