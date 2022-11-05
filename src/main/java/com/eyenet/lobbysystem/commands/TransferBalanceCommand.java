@@ -1,15 +1,14 @@
 package com.eyenet.lobbysystem.commands;
 
 import com.eyenet.lobbysystem.sql.SQLUtils;
+import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.event.Listener;
 
+import java.util.Objects;
 import java.util.UUID;
-
-import static com.eyenet.lobbysystem.sql.SQLUtils.getUUIDbyName;
 
 public class TransferBalanceCommand implements CommandExecutor {
 
@@ -22,8 +21,20 @@ public class TransferBalanceCommand implements CommandExecutor {
             sender.sendMessage("§7[§3Lobby§6System§7] §cBitte benutze /transferbalance <Spieler> <Betrag>");
             return false;
         }else{
-            UUID receiverUUID = getUUIDbyName(args[0]);
-            SQLUtils.transferBalance(sender.getUniqueId(), receiverUUID, Integer.parseInt(args[1]));
+            Player target = Bukkit.getPlayer(args[0]);
+            if (target != null){
+             UUID targetUUID = target.getUniqueId();
+             if (targetUUID == sender.getUniqueId()) {
+                 sender.sendMessage("§7[§3Lobby§6System§7] §cDu kannst dir nicht selbst Geld überweisen!");
+                 return false;
+             }
+             SQLUtils.transferBalance(sender.getUniqueId(), targetUUID, Integer.parseInt(args[1]));
+             sender.sendMessage("§7[§3Lobby§6System§7] §aDu hast §e" + args[1] + "§a an §e" + target.getName() + "§a überwiesen!");
+            }else{
+                sender.sendMessage("§7[§3Lobby§6System§7] §cDer Spieler existiert nicht!");
+            }
+
+
         }
 
         return true;

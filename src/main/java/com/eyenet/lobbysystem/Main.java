@@ -1,9 +1,6 @@
 package com.eyenet.lobbysystem;
 
-import com.eyenet.lobbysystem.commands.BalanceCommand;
-import com.eyenet.lobbysystem.commands.CheckDB;
-import com.eyenet.lobbysystem.commands.PingCommand;
-import com.eyenet.lobbysystem.commands.RandomTPCommand;
+import com.eyenet.lobbysystem.commands.*;
 import com.eyenet.lobbysystem.listener.OnJoinListener;
 import com.eyenet.lobbysystem.listener.BalanceListener;
 import com.eyenet.lobbysystem.sql.CreateTables;
@@ -23,7 +20,7 @@ public final class Main extends JavaPlugin {
         getCommand("wild").setExecutor(new RandomTPCommand());
         getCommand("checkdb").setExecutor(new CheckDB());
         getCommand("balance").setExecutor(new BalanceCommand());
-        getCommand("transferbalance").setExecutor(new BalanceCommand());
+        getCommand("transfer").setExecutor(new TransferBalanceCommand());
 
         SQLInit.initDB();
         if (SQLInit.hasConn()){

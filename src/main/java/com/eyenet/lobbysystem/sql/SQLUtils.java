@@ -43,6 +43,9 @@ public class SQLUtils extends SQLInit {
 
                 if (getBalance(senderUUID) >= amount) {
 
+                    addBalance(receiverUUID, amount);
+                    removeBalance(senderUUID, amount);
+
                 } else {
                     Player sender = Bukkit.getPlayer(senderUUID);
                     sender.sendMessage("§cDu hast nicht genug Geld!");
@@ -96,7 +99,5 @@ public class SQLUtils extends SQLInit {
             e.printStackTrace();
         }
     }
-
-
 
 }

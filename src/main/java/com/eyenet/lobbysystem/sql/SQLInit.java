@@ -14,11 +14,11 @@ public class SQLInit {
     //172.17.0.2 Docker
     public static void initDB(){
 
-        host = "localhost";
+        host = "172.17.0.2";
         port = 3306;
         db = "lobbysystem";
-        user = "root";
-        pwd = "";
+        user = "main";
+        pwd = "dengmamm1";
 
         try{
             connect();
