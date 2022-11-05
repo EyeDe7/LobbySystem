@@ -61,6 +61,20 @@ public class SQLUtils extends SQLInit {
         }
     }
 
+    public static UUID getUUIDbyName(String name){
+        try{
+            PreparedStatement query = con.prepareStatement("SELECT uuid FROM users WHERE name = ?");
+            query.setString(1, name);
+            ResultSet rs = query.executeQuery();
+            if (rs.next()) {
+                return UUID.fromString(rs.getString("uuid"));
+            }
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     public static void removeBalance(UUID uuid, int amount) {
         try {
             PreparedStatement query = con.prepareStatement("UPDATE users SET coins = coins - ? WHERE uuid = ?");

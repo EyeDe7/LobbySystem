@@ -23,6 +23,7 @@ public final class Main extends JavaPlugin {
         getCommand("wild").setExecutor(new RandomTPCommand());
         getCommand("checkdb").setExecutor(new CheckDB());
         getCommand("balance").setExecutor(new BalanceCommand());
+        getCommand("transferbalance").setExecutor(new BalanceCommand());
 
         SQLInit.initDB();
         if (SQLInit.hasConn()){
