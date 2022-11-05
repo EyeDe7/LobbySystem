@@ -39,40 +39,24 @@ public class SQLUtils extends SQLInit {
     public static void transferBalance(UUID senderUUID, UUID receiverUUID, int amount) {
         try {
 
-            Player sender = Bukkit.getPlayer(senderUUID);
-
             if (checkIfPlayerExists(receiverUUID)){
 
                 if (getBalance(senderUUID) >= amount) {
 
-                    removeBalance(senderUUID, amount);
-                    addBalance(receiverUUID, amount);
-
                 } else {
+                    Player sender = Bukkit.getPlayer(senderUUID);
                     sender.sendMessage("§cDu hast nicht genug Geld!");
                 }
 
             }else{
+                Player sender = Bukkit.getPlayer(senderUUID);
                 sender.sendMessage("§cDer Spieler existiert nicht!");
             }
+
 
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    public static UUID getUUIDbyName(String name){
-        try{
-            PreparedStatement query = con.prepareStatement("SELECT uuid FROM users WHERE name = ?");
-            query.setString(1, name);
-            ResultSet rs = query.executeQuery();
-            if (rs.next()) {
-                return UUID.fromString(rs.getString("uuid"));
-            }
-        }catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return null;
     }
 
     public static void removeBalance(UUID uuid, int amount) {

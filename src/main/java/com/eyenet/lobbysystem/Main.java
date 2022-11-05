@@ -5,7 +5,7 @@ import com.eyenet.lobbysystem.commands.CheckDB;
 import com.eyenet.lobbysystem.commands.PingCommand;
 import com.eyenet.lobbysystem.commands.RandomTPCommand;
 import com.eyenet.lobbysystem.listener.OnJoinListener;
-import com.eyenet.lobbysystem.listeners.BalanceListener;
+import com.eyenet.lobbysystem.listener.BalanceListener;
 import com.eyenet.lobbysystem.sql.CreateTables;
 import com.eyenet.lobbysystem.sql.SQLInit;
 import org.bukkit.plugin.java.JavaPlugin;
