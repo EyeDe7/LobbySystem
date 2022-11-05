@@ -3,6 +3,7 @@ package com.eyenet.lobbysystem;
 import com.eyenet.lobbysystem.commands.*;
 import com.eyenet.lobbysystem.listener.OnJoinListener;
 import com.eyenet.lobbysystem.listener.BalanceListener;
+import com.eyenet.lobbysystem.listener.OnPlace;
 import com.eyenet.lobbysystem.sql.CreateTables;
 import com.eyenet.lobbysystem.sql.SQLInit;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -29,6 +30,7 @@ public final class Main extends JavaPlugin {
 
         getServer().getPluginManager().registerEvents(new OnJoinListener(), this);
         getServer().getPluginManager().registerEvents(new BalanceListener(), this);
+        getServer().getPluginManager().registerEvents(new OnPlace(), this);
     }
 
     @Override
