@@ -29,7 +29,7 @@ public final class Main extends JavaPlugin {
             CreateTables.createTables();
         }
         getServer().getPluginManager().registerEvents(new OnJoinListener(), this);
-        //getServer().getPluginManager().registerEvents(new BalanceListener(), this);
+        getServer().getPluginManager().registerEvents(new BalanceListener(), this);
     }
 
     @Override
