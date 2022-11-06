@@ -13,10 +13,6 @@ public class OnPlace implements Listener {
     public static void onPlace(BlockPlaceEvent event){
         Player p = event.getPlayer();
 
-        if(event.getBlock().getBlockData().getMaterial().equals(Material.CHEST)){
-            event.setCancelled(true);
-        }
-
     }
 
 }

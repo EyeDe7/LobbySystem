@@ -15,10 +15,20 @@ public class CreateTables extends SQLInit {
             "PRIMARY KEY (id)" +
             ");";
 
+    private static final String reporttable = "CREATE TABLE if not exists reports(" +
+            "id INT NOT NULL AUTO_INCREMENT," +
+            "reporter VARCHAR(36) NOT NULL," +
+            "reported VARCHAR(36) NOT NULL," +
+            "reason VARCHAR(255) NOT NULL," +
+            "date DATE NOT NULL," +
+            "PRIMARY KEY (id)" +
+            ");";
+
     public static void createTables() {
         try {
             statement = con.createStatement();
             statement.executeUpdate(usertable);
+            statement.executeUpdate(reporttable);
         } catch (Exception e) {
             e.printStackTrace();
         }

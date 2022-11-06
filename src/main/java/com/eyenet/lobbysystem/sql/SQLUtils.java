@@ -90,4 +90,15 @@ public class SQLUtils extends SQLInit {
         }
     }
 
+    public static void setCoins(UUID uuid, int coins){
+        try {
+            PreparedStatement query = con.prepareStatement("UPDATE users SET coins = ? WHERE uuid = ?");
+            query.setInt(1, coins);
+            query.setString(2, uuid.toString());
+            query.executeUpdate();
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
