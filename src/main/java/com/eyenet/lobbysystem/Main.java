@@ -27,6 +27,7 @@ public final class Main extends JavaPlugin {
         getCommand("checkdb").setExecutor(new CheckDB());
         getCommand("balance").setExecutor(new BalanceCommand());
         getCommand("transfer").setExecutor(new TransferBalanceCommand());
+        getCommand("report").setExecutor(new ReportUserCommand());
 
         getServer().getPluginManager().registerEvents(new OnJoinListener(), this);
         getServer().getPluginManager().registerEvents(new BalanceListener(), this);

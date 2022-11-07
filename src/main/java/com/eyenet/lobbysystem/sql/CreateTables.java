@@ -21,6 +21,7 @@ public class CreateTables extends SQLInit {
             "reported VARCHAR(36) NOT NULL," +
             "reason VARCHAR(255) NOT NULL," +
             "date DATE NOT NULL," +
+            "time TIMESTAMP NOT NULL," +
             "PRIMARY KEY (id)" +
             ");";
 

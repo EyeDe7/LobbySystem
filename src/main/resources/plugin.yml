@@ -22,3 +22,7 @@ commands:
     description: "Transfer money"
     aliases:
       - pay
+  report:
+    description: "Report a player"
+    aliases:
+      - reportplayer
