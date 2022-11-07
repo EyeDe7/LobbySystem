@@ -25,11 +25,18 @@ public class CreateTables extends SQLInit {
             "PRIMARY KEY (id)" +
             ");";
 
+    private static final String tpastable = "CREATE TABLE if not exists tpas(" +
+            "id INT NOT NULL AUTO_INCREMENT," +
+            "sender VARCHAR(36) NOT NULL," +
+            "target VARCHAR(36) NOT NULL," +
+            ");";
+
     public static void createTables() {
         try {
             statement = con.createStatement();
             statement.executeUpdate(usertable);
             statement.executeUpdate(reporttable);
+            statement.executeUpdate(tpastable);
         } catch (Exception e) {
             e.printStackTrace();
         }
