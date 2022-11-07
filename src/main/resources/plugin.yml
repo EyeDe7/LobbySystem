@@ -26,3 +26,7 @@ commands:
     description: "Report a player"
     aliases:
       - reportplayer
+  tpa:
+    description: "Teleport to a player"
+  tpaaccept:
+    description: "Accept teleport request"

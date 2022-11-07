@@ -118,4 +118,40 @@ public class SQLUtils extends SQLInit {
 
         }
     }
+
+    public static void addTPARequest(UUID target, UUID sender) {
+        try {
+            PreparedStatement insert = con.prepareStatement("INSERT INTO tpas (target, sender) VALUES (?, ?)");
+            insert.setString(1, target.toString());
+            insert.setString(2, sender.toString());
+            insert.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void removeTPARequest(UUID target, UUID sender) {
+        try {
+            PreparedStatement query = con.prepareStatement("DELETE FROM tpas WHERE target = ? AND sender = ?");
+            query.setString(1, target.toString());
+            query.setString(2, sender.toString());
+            query.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static boolean hasPlayerTPARequest(UUID Player, UUID sender) {
+        try {
+            PreparedStatement query = con.prepareStatement("SELECT target FROM tpas WHERE target = ? AND sender = ?");
+            query.setString(1, Player.toString());
+            query.setString(2, sender.toString());
+            ResultSet rs = query.executeQuery();
+            return rs.next();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 }
+

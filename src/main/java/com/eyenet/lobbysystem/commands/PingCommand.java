@@ -14,6 +14,12 @@ public class PingCommand implements CommandExecutor {
 
         Player sender = (Player) commandSender;
 
+        //check if sender is console
+        if (sender == null) {
+            Bukkit.getConsoleSender().sendMessage("§7[§3Lobby§6System§7] §cDu kannst diesen Befehl nicht als Konsole ausführen!");
+            return false;
+        }
+
         if(args.length == 0) sender.sendMessage(Main.PREFIX+ "Your ping: " + sender.getPing());
         else {
             Player target = Bukkit.getPlayer(args[0]);

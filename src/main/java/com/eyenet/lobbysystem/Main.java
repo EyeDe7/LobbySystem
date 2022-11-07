@@ -28,6 +28,8 @@ public final class Main extends JavaPlugin {
         getCommand("balance").setExecutor(new BalanceCommand());
         getCommand("transfer").setExecutor(new TransferBalanceCommand());
         getCommand("report").setExecutor(new ReportUserCommand());
+        getCommand("tpa").setExecutor(new TPACommand());
+        getCommand("tpaccept").setExecutor(new TPAcceptCommand());
 
         getServer().getPluginManager().registerEvents(new OnJoinListener(), this);
         getServer().getPluginManager().registerEvents(new BalanceListener(), this);
